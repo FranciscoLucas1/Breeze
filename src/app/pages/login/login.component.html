@@ -1,0 +1,15 @@
+<div class="principal">
+    <div class="logo">
+        <img src="LogoBreeze.svg" alt="logo"> 
+    </div>
+    <div class="principal__titulo">
+        <p> LOGIN </p>
+    </div>
+    <form class="formulario" [formGroup]="loginForm" action="/salva" method="POST">
+        <label for="usuario">USUÁRIO</label>
+        <input formControlName="usuario" type="text" name="usuario" id="usuario" placeholder="Usuário">
+        <label for="senha">SENHA</label>
+        <input formControlName="senha" type="password" name="usuario" id="usuario" placeholder="Digite sua senha">
+        <button type="submit" class="botao_login">ENTRAR</button>
+    </form>
+</div>

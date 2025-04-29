@@ -1,0 +1,82 @@
+.principal {
+    width: 550px;
+    height:  830px;
+    background-color: #1E1D26;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
+   
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 9px;
+}
+
+.principal__titulo {
+    font-family: "Inter";
+    color: #2CB67D;
+    font-weight: bold;
+    font-size: 31px;
+    margin-top: -20px;
+
+} 
+
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    gap: 5px;
+   
+}
+
+label {
+    font-family: "Inter";
+    color: #2CB67D;
+    font-size: 20px;
+}
+
+input {
+    width: 415px;
+    height: 60px;
+    border-radius: 9px;
+    text-decoration: none;
+
+}
+
+
+input::content {
+    font-size: 18px; 
+    font-family: "Inter"; 
+}
+
+input::placeholder  {
+    font-size: 18px; 
+    font-family: "Roboto"; 
+}
+
+input:focus {
+    border: 2px solid #7F5AF0; 
+    outline: none; 
+   
+}
+
+.botao_login {
+    width: 100px;
+    height: 45px;
+    background-color: #7F5AF0;
+    outline: none;
+    border: none;
+    color: white;
+    font-family: "Inter";
+    border-radius: 8px;
+    align-self: center;
+    margin-top: 15px;
+}
+
+.botao_login:hover{
+    background-color: #583ab5;
+}
