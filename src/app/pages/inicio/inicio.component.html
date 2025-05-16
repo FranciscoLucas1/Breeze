@@ -1,1 +1,23 @@
-<p>inicio works!</p>
+
+<header class="header">
+    <div class="header__logo">
+      <img src="LogoBreeze.svg" alt="Breeze Logo">
+    </div>
+  
+    <div class="header__busca">
+      <input
+        type="text"/>
+  
+      <button (click)="buscar()" aria-label="Buscar">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+  
+    <nav class="header__botoes">
+      <button routerLink="/perfil" class="botao botao_perfil">
+        <i class="fas fa-user"></i>
+        Perfil
+      </button>
+    </nav>
+  </header>
+  

@@ -5,7 +5,8 @@ import { InicioComponent } from './pages/inicio/inicio.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 
 export const routes: Routes = [
-    {path: "", component: LoginComponent},
+    {path: "login", component: LoginComponent},
+    {path: "", component: CadastroComponent},
     {path: "cadastro", component: CadastroComponent},
     {path: "inicio", component: InicioComponent},
     {path: "perfil", component: PerfilComponent},

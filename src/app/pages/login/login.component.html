@@ -5,11 +5,12 @@
     <div class="principal__titulo">
         <p> LOGIN </p>
     </div>
-    <form class="formulario" [formGroup]="loginForm" action="/salva" method="POST">
+    <form class="formulario" [formGroup]="loginForm"(ngSubmit)="onSubmit()">
         <label for="usuario">USUÁRIO</label>
         <input formControlName="usuario" type="text" name="usuario" id="usuario" placeholder="Usuário">
         <label for="senha">SENHA</label>
         <input formControlName="senha" type="password" name="usuario" id="usuario" placeholder="Digite sua senha">
+        <a routerLink="/cadastro" class="criar-conta">Criar conta</a>
         <button type="submit" class="botao_login">Entrar</button>
     </form>
 </div>
