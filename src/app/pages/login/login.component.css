@@ -18,7 +18,7 @@
 }
 
 .principal__titulo {
-    font-family: "Inter";
+    font-family: "Montserrat";
     color: #2CB67D;
     font-weight: bold;
     font-size: 31px;
@@ -46,19 +46,22 @@ input {
     width: 415px;
     height: 60px;
     border-radius: 9px;
-    text-decoration: none;
+    border: 2px solid #A6A6A6;
+    background-color: #1E1D26;
 
 }
 
 
-input::content {
-    font-size: 18px; 
+input::content{
+    font-size: 21px; 
     font-family: "Chivo"; 
+    color: #FFF;
 }
 
 input::placeholder  {
-    font-size: 20px; 
-    font-family: "Chivo"; 
+    font-size: 21px; 
+    font-family: "Chivo";
+    margin-left: 20px; 
 }
 
 input:focus {
@@ -66,6 +69,21 @@ input:focus {
     outline: none; 
    
 }
+
+.criar-conta {
+    font-family: "Chivo";
+    font-size: 21px;
+    display: block;
+    text-align: right;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    color: #2CB67D; 
+    text-decoration: underline;
+  }
+  
+  .criar-conta:hover {
+    cursor: pointer;
+  }
 
 .botao_login {
     width: 100px;
@@ -84,4 +102,5 @@ input:focus {
 
 .botao_login:hover{
     background-color: #583ab5;
+    cursor: pointer;
 }
