@@ -1,0 +1,15 @@
+
+.container {
+    height: 90%;
+    display: flex;
+    justify-content: center;  
+    align-items: center;           
+    color: white;
+    font-family: 'Chivo', sans-serif;
+  }
+  .container__perfil{
+    text-align: center;
+  }
+
+
+  
