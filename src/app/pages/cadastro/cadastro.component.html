@@ -1,1 +1,20 @@
-<p>cadastro works!</p>
+<div class="principal">
+    <div class="logo">
+        <img src="LogoBreeze.svg" alt="logo"> 
+    </div>
+    <div class="principal__titulo">
+        <p> CADASTRO </p>
+    </div>
+    <form class="formulario" [formGroup]="cadastroForm"(ngSubmit)="onSubmit()">
+        <label for="email">E-MAIL</label>
+        <input formControlName="email" type="email" name="email" id="email" placeholder="E-mail">
+        <label for="usuario">USUÁRIO</label>
+        <input formControlName="usuario" type="text" name="usuario" id="usuario" placeholder="Usuário">
+        <label for="senha">SENHA</label>
+        <input formControlName="senha" type="password" name="senha" id="senha" placeholder="Digite sua senha">
+        <label for="senha_repetir">REPITA SUA SENHA</label>
+        <input formControlName="senha_repetir" type="password" name="senha_repetir" id="senha_repetir" placeholder="Repita sua senha">
+        <a routerLink="/login" class="logar"> Já possui cadastro?</a>
+        <button type="submit" class="botao_cadastro">Cadastrar</button>
+    </form>
+</div>
