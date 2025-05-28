@@ -7,6 +7,12 @@
   background-color: #181425;
   padding: 10px 10px;
   color: #ffffff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;          /* ajuste conforme a sua altura real */
+  z-index: 1000; 
 }
 
 .nav_logo {
