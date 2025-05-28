@@ -1,7 +1,86 @@
-@import url('https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
-  
-  .header {
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #181425;
+  padding: 10px 10px;
+  color: #ffffff;
+}
+
+.nav_logo {
+  display: flex;
+  align-items: flex-start;
+}
+
+.nav_logo img {
+  height: 40px;
+}
+
+.nav_links {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.nav_links li {
+  margin: 0 20px;
+}
+
+.nav_links a {
+  text-decoration: none;
+  color: #c5c0e0;
+  font-size: 0.95em;
+  transition: color 0.3s ease;
+  font-family: "Chivo";
+}
+
+.nav_links a:hover {
+  color: #ffffff;
+}
+
+.nav_actions {
+  display: flex;
+  align-items: center;
+}
+
+.btn {
+  border: none;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 12px;
+  font: 0.09em;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-family: "Chivo";
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.login_btn {
+  background-color: #7f5af0;
+  color: #ffffff;
+}
+
+.cadastro_btn {
+  background-color: #2d2546;
+  color: #ffffff;
+}
+
+.login_btn:hover {
+  background-color: #5c2af1;
+}
+
+.cadastro_btn:hover {
+  background-color: #5c2af1;
+}
+
+/* .header {
     width: 100;
     background-color: #1E1D26;
     display: flex;
@@ -77,9 +156,4 @@
   }
   .botao_perfil:hover {
     background-color: #27a26c;
-  }
-  
- 
-  
- 
-  
+  } */
