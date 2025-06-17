@@ -35,7 +35,7 @@ label {
   font-family: "Montserrat";
   font-weight: 600;
   color: #2cb67d;
-  font-size: 20px;
+  font-size: 16 px;
 }
 
 input {
@@ -47,13 +47,13 @@ input {
 }
 
 input::content {
-  font-size: 21px;
+  font-size: 18px;
   font-family: "Chivo";
   color: #fff;
 }
 
 input::placeholder {
-  font-size: 21px;
+  font-size: 18px;
   font-family: "Chivo";
   margin-left: 20px;
 }

@@ -39,7 +39,7 @@ label {
     font-family: "Montserrat"; 
     font-weight: 600;
     color: #2CB67D;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 input {
@@ -53,7 +53,7 @@ input {
 
 
 input::content{
-    font-size: 21px; 
+    font-size: 18px; 
     font-family: "Chivo"; 
     color: #FFF;
 }
