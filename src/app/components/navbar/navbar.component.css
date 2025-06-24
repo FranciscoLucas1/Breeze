@@ -11,7 +11,7 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 60px;          /* ajuste conforme a sua altura real */
+  height: 60px;          
   z-index: 1000; 
 }
 
@@ -68,23 +68,31 @@
   transform: translateY(-2px);
 }
 
-.login_btn {
+.login_btn, .cadastro_btn {
+  color: #ffffff;
+}
+
+.login_btn{
   background-color: #7f5af0;
-  color: #ffffff;
 }
 
-.cadastro_btn {
+.cadastro_btn{
   background-color: #2d2546;
-  color: #ffffff;
 }
 
-.login_btn:hover {
-  background-color: #5c2af1;
-}
-
+.login_btn:hover,
 .cadastro_btn:hover {
   background-color: #5c2af1;
 }
+
+
+.perfil_btn, .sair_btn {
+  color: white;
+  background-color: #7f5af0
+}
+
+
+
 
 /* .header {
     width: 100;

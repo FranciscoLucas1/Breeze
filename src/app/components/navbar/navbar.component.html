@@ -1,20 +1,30 @@
 <nav class="navbar">
   <div class="nav_logo">
-    <a routerLink="/login">
-    <img src="LogoBreeze.svg" alt="logo SVG do site breeze" />
+    <a routerLink="/inicio">
+      <img src="LogoBreeze.svg" alt="logo SVG do site breeze" />
     </a>
   </div>
 
   <div class="nav_actions">
     <ul class="nav_links">
-      <li><a routerLink="/inicio">Como Funciona</a></li>
-      <li><a routerLink="/perfil">Explorar Gêneros</a></li>
+      <li *ngIf="!autenticaoServico.logado()">
+        <a routerLink="/inicio">Como Funciona</a>
+      </li>
+      <li><a routerLink="/inicio">Explorar Gêneros</a></li>
     </ul>
 
-    <button class="btn login_btn">Entre para a Vibe</button>
-    <button class="btn cadastro_btn">Crie sua Conta</button>
+    <ng-container *ngIf="autenticaoServico.logado(); else deslogado">
+      <button class="btn perfil_btn" routerLink="/perfil">Perfil</button>
+      <button class="btn sair_btn" (click)="logout()">Sair</button>
+    </ng-container>
+
+    <ng-template #deslogado>
+      <button class="btn login_btn" routerLink="/login">Entre para a Vibe</button>
+      <button class="btn cadastro_btn" routerLink="/cadastro">Crie sua Conta</button>
+    </ng-template>
   </div>
 </nav>
+
 
 <!-- <header class="header">
     <div class="header__logo">
