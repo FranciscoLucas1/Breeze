@@ -1,4 +1,3 @@
-/* src/app/pages/perfil/perfil.component.css */
 
 .container {
   height: 90%;
@@ -11,8 +10,8 @@
 
 .container__perfil {
   width: 100%;
-  max-width: 450px; /* Adicionado para melhor layout em telas maiores */
-  height: auto; /* Alterado para se ajustar ao conteúdo */
+  max-width: 450px; 
+  height: auto; 
   min-height: 550px;
   background-color: #131317;
   text-align: center;
@@ -21,7 +20,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px; /* Adicionado espaçamento interno */
+  padding: 20px; 
   box-sizing: border-box;
 }
 
@@ -29,17 +28,17 @@
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  object-fit: cover; /* Garante que a imagem não se distorça */
-  margin-bottom: 16px; /* Adicionado espaço abaixo da imagem */
+  object-fit: cover; 
+  margin-bottom: 16px; 
 }
 
 .perfil__usuario {
   font-size: 24px;
-  margin-bottom: 8px; /* Aumentado o espaço */
+  margin-bottom: 8px; 
   margin-top: 0;
 }
 
-/* NOVO ESTILO PARA A BIO */
+
 .perfil__bio {
   font-size: 16px;
   color: #a7a7a7;
@@ -60,7 +59,7 @@
 
 .perfil__generos {
   display: flex;
-  flex-wrap: wrap; /* Permite que os gêneros quebrem a linha */
+  flex-wrap: wrap; 
   justify-content: center;
   gap: 8px;
   margin-bottom: 24px;
@@ -83,7 +82,6 @@
   background-color: #2e2c33;
 }
 
-/* ESTILOS PARA BOTÕES DE AÇÃO */
 .editar, .salvar, .cancelar {
   border: none;
   color: white;
@@ -139,7 +137,6 @@ textarea.edit-field {
   min-height: 100px;
   resize: vertical;
 }
-
 
 
 

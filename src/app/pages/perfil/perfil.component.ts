@@ -6,8 +6,7 @@ import { Usuario } from '../../types/usuario';
 import { AutenticacaoService } from '../../services/autenticacao.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { MinhasAvaliacoesComponent } from '../../components/minhas-avaliacoes/minhas-avaliacoes.component';
+import { NotificacaoService } from '../../services/notificacao.service';
 
 @Component({
   selector: 'app-perfil',
@@ -15,7 +14,6 @@ import { MinhasAvaliacoesComponent } from '../../components/minhas-avaliacoes/mi
     CommonModule,
     NavbarComponent,
     FormsModule,
-    MinhasAvaliacoesComponent
   ],
   templateUrl: './perfil.component.html',
   styleUrls: ['./perfil.component.css']
@@ -31,7 +29,7 @@ export class PerfilComponent implements OnInit {
   
   @ViewChild('fileInput') fileInput!: ElementRef;
 
-  constructor(private autenticacaoService: AutenticacaoService) {}
+  constructor(private autenticacaoService: AutenticacaoService, private noti: NotificacaoService) {}
 
   ngOnInit() {
     this.carregarUsuario();
@@ -102,9 +100,10 @@ export class PerfilComponent implements OnInit {
       this.usuarioEditavel = null;
       this.fotoPreview = null;
       this.arquivoSelecionado = null;
+      this.noti.sucesso("Perfil editado com sucesso", "Edição realizada")
     },
     error: (err: any) => {
-      console.error('Erro ao atualizar o perfil', err);
+      this.noti.trataErro(err);
     }
   };
 }

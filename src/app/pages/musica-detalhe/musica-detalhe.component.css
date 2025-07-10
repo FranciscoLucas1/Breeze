@@ -1,4 +1,4 @@
-/* Define variáveis de cor no :host para que funcionem dentro do componente */
+/* variáveis de cor */
 :host {
   --cor-fundo-principal: #181425;
   --cor-fundo-secundaria: #2d2546;
@@ -10,19 +10,19 @@
   --cor-estrela-inativa: #4a4069;
 }
 
-/* --- Container Principal --- */
+
 .detalhe-container {
   max-width: 900px;
   margin: 0 auto;
-  padding: 100px 20px 50px 20px; /* Padding superior para a navbar fixa */
+  padding: 100px 20px 50px 20px; 
   color: var(--cor-texto-principal);
   font-family: "Chivo";
 }
 
-/* --- Cabeçalho da Música --- */
+
 .musica-header {
   display: flex;
-  align-items: flex-start; /* Alinha os itens no topo */
+  align-items: flex-start; 
   gap: 30px;
   margin-bottom: 50px;
   padding-bottom: 40px;
@@ -67,7 +67,7 @@
   color: var(--cor-acento-principal);
 }
 
-/* --- Títulos das Seções (estilo Letterboxd) --- */
+
 h3 {
   font-family: "Montserrat";
   font-size: 1.1em;
@@ -78,10 +78,9 @@ h3 {
   margin: 50px 0 25px 0;
   padding-bottom: 10px;
   border-bottom: 1px solid var(--cor-fundo-secundaria);
-  display: block; /* Ocupa a largura toda */
-}
+  display: block; 
 
-/* --- Seção de Nova Avaliação --- */
+}
 .nova-avaliacao-section form {
   background-color: var(--cor-fundo-secundaria);
   padding: 30px;
@@ -103,22 +102,22 @@ h3 {
   letter-spacing: 1px;
 }
 
-/* --- Sistema de Avaliação por Estrelas (Simplificado) --- */
+
 .star-rating {
   display: flex;
   align-items: center;
-  gap: 8px; /* Espaçamento entre as estrelas */
+  gap: 8px; 
 }
 
 .star {
-  font-size: 2.5em; /* Tamanho das estrelas */
+  font-size: 2.5em; 
   color: var(--cor-estrela-inativa);
   cursor: pointer;
   transition: color 0.2s ease-in-out, transform 0.1s ease-in-out;
   line-height: 1;
 }
 
-/* Pinta a estrela de amarelo quando ela tem a classe .ativo ou o mouse está por cima */
+
 .star:hover,
 .star.ativo {
   color: var(--cor-estrela-ativa);
@@ -132,7 +131,6 @@ h3 {
   font-weight: bold;
 }
 
-/* --- Campo de Texto e Botão --- */
 .form-group textarea {
   width: 100%;
   padding: 15px;
@@ -177,7 +175,6 @@ button[type="submit"]:disabled {
   opacity: 0.6;
 }
 
-/* --- Seção de Comentários --- */
 .comentarios-section {
   display: flex;
   flex-direction: column;
@@ -215,7 +212,7 @@ button[type="submit"]:disabled {
   text-align: right;
 }
 
-/* --- Mensagens de Estado (Carregando, Sem Avaliações) --- */
+
 .loading-message,
 .message-sem-avaliacoes {
   text-align: center;
@@ -245,8 +242,8 @@ button[type="submit"]:disabled {
 .autor-foto {
   width: 40px;
   height: 40px;
-  border-radius: 50%; /* Deixa a foto redonda */
-  object-fit: cover; /* Garante que a imagem não fique distorcida */
+  border-radius: 50%; 
+  object-fit: cover; 
   border: 2px solid var(--cor-fundo-principal);
 }
 
@@ -262,13 +259,13 @@ button[type="submit"]:disabled {
 }
 
 .mensagem-ja-avaliado h3 {
-  border-bottom: none; /* Remove a borda do h3 nesta seção específica */
+  border-bottom: none; 
   margin-top: 0;
 }
 
-/* Garanta que o estilo antigo seja sobrescrito se necessário */
+
 .comentario-card .comentario-autor {
-  font-size: 1em; /* Ajusta o tamanho da fonte para acomodar a foto */
+  font-size: 1em; 
 }
 
 @keyframes spin {

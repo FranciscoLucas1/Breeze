@@ -22,8 +22,8 @@
 }
 
 .nav_search {
-  flex-grow: 1; /* Permite que a busca ocupe o espaço disponível */
-  max-width: 500px; /* Define uma largura máxima */
+  flex-grow: 1; 
+  max-width: 500px; 
   margin: 0 20px;
 }
 
@@ -31,7 +31,7 @@
   display: flex;
   background: #2d2546;
   border-radius: 25px;
-  overflow: hidden; /* Garante que o botão não saia do raio */
+  overflow: hidden; 
 }
 
 .nav_search input {
