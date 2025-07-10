@@ -16,8 +16,9 @@ export const authInterceptor: HttpInterceptorFn = (req: HttpRequest<unknown>, ne
   const router = inject(Router);
   const token = localStorage.getItem('access_token');
 
-  // Se for uma requisição para obter/renovar o token, não adiciona o header
-  if (req.url.includes('/api/token')) {
+  // CORREÇÃO: Ajustado para as rotas de JWT corretas.
+  // Se for uma requisição para obter/renovar o token, não adiciona o header de autorização.
+  if (req.url.includes('/auth/jwt/')) {
     return next(req);
   }
 
@@ -31,18 +32,22 @@ export const authInterceptor: HttpInterceptorFn = (req: HttpRequest<unknown>, ne
   // Envia a requisição e prepara para tratar erros
   return next(req).pipe(
     catchError((error: unknown) => {
-      // Verifica se o erro é um 401 Unauthorized
-      if (error instanceof HttpErrorResponse && error.status === 401) {
+      // CORREÇÃO: Adicionamos uma verificação para não tentar renovar o token em caso de falha no próprio login.
+      if (
+        error instanceof HttpErrorResponse &&
+        error.status === 401 &&
+        !req.url.includes('/auth/jwt/create/') // Não intercepta falha de login
+      ) {
         return handle401Error(req, next, authService, router);
       }
       
-      // Para outros erros, apenas os relança
+      // Para outros erros (incluindo o 401 do login), apenas os relança para o componente que fez a chamada.
       return throwError(() => error);
     })
   );
 };
 
-// Função auxiliar para encapsular a lógica de refresh
+// Função auxiliar para encapsular a lógica de refresh (sem alterações aqui)
 function handle401Error(req: HttpRequest<any>, next: HttpHandlerFn, authService: AutenticacaoService, router: Router): Observable<HttpEvent<any>> {
   if (!isRefreshing) {
     isRefreshing = true;

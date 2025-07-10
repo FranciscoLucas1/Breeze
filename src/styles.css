@@ -1,6 +1,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+@import 'ngx-toastr/toastr';
 * {
     box-sizing: border-box;
   }
@@ -16,5 +17,34 @@
 
 
 
+  .ngx-toastr {
+    font-family: 'Chivo', sans-serif !important;
+    border-radius: 4px !important; 
+    box-shadow: none !important; 
+    backdrop-filter: none !important; 
+    color: white !important; 
+  }
+  
+  .toast-title {
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 700 !important; /* Título em negrito */
+    font-size: 16px !important;
+    color: white !important; /* Título em preto para maior destaque */
+  }
+  
 
-
+  .toast-success .ngx-toastr-icon {
+      color: #28a745 !important;
+  }
+  /* Ícone de erro */
+  .toast-error .ngx-toastr-icon {
+      color: #dc3545 !important;
+  }
+  /* Ícone de aviso */
+  .toast-warning .ngx-toastr-icon {
+      color: #ffc107 !important;
+  }
+  /* Ícone de informação */
+  .toast-info .ngx-toastr-icon {
+      color: #17a2b8 !important;
+  }
