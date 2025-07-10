@@ -63,18 +63,17 @@ export class MusicaDetalheComponent implements OnInit {
       return;
     }
     const avaliacaoData = {
-      // ✅ CORRIGIDO: A chave agora é 'musica_id', como esperado pelo serializer.
       musica_id: this.musica.id,
       ...this.avaliacaoForm.value
     };
 
     this.musicService.createAvaliacao(avaliacaoData).subscribe({
       next: (novaAvaliacao) => {
-        // Adiciona a nova avaliação à lista e reseta o formulário
+
         this.musica.avaliacoes.unshift(novaAvaliacao);
         this.avaliacaoForm.reset();
         this.notaAtual = 0;
-        // Atualiza o estado para mostrar que o usuário já avaliou
+
         this.musica.avaliado_pelo_usuario = true; 
       },
       error: (err) => {

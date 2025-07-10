@@ -6,7 +6,6 @@ import { PesquisarMusicaService } from '../../services/pesquisa_musica.service';
 
 @Component({
   selector: 'app-inicio',
-  standalone: true,
   imports: [CommonModule, RouterModule, NavbarComponent],
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.css']
@@ -39,9 +38,8 @@ export class InicioComponent implements OnInit {
 
     this.musicService.getTopBrasil().subscribe({
       next: (response) => {
-        // 1. Salva a lista COMPLETA, sem cortar.
+    
         this.topBrasilCompleto = response.data;
-        // 2. Chama a função para exibir os 5 primeiros itens.
         this.atualizarDisplay('brasil');
       },
       error: (err) => console.error('Erro ao buscar Top Brasil:', err)
@@ -49,9 +47,7 @@ export class InicioComponent implements OnInit {
 
     this.musicService.getTopMundo().subscribe({
       next: (response) => {
-        // 1. Salva a lista COMPLETA, sem cortar.
         this.topMundoCompleto = response.data;
-        // 2. Chama a função para exibir os 5 primeiros itens.
         this.atualizarDisplay('mundo');
         this.isLoading = false;
       },
@@ -62,7 +58,7 @@ export class InicioComponent implements OnInit {
     });
   }
 
-  // Este método já está correto
+
   atualizarDisplay(tipo: 'brasil' | 'mundo'): void {
     if (tipo === 'brasil') {
       const fim = this.indiceBrasil + this.itensPorPagina;
@@ -73,7 +69,6 @@ export class InicioComponent implements OnInit {
     }
   }
 
-  // Este método já está correto
   navegar(tipo: 'brasil' | 'mundo', direcao: 'proximo' | 'anterior'): void {
     if (tipo === 'brasil') {
       if (direcao === 'proximo' && (this.indiceBrasil + this.itensPorPagina) < this.topBrasilCompleto.length) {
@@ -82,7 +77,7 @@ export class InicioComponent implements OnInit {
         this.indiceBrasil -= this.itensPorPagina;
       }
       this.atualizarDisplay('brasil');
-    } else { // tipo === 'mundo'
+    } else { 
       if (direcao === 'proximo' && (this.indiceMundo + this.itensPorPagina) < this.topMundoCompleto.length) {
         this.indiceMundo += this.itensPorPagina;
       } else if (direcao === 'anterior' && this.indiceMundo > 0) {

@@ -29,7 +29,7 @@ export class ResultadosPesquisaComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // Escuta mudanças no parâmetro 'termo' da URL
+    
     this.route.paramMap.subscribe(params => {
       const termo = params.get('termo');
       if (termo) {
@@ -42,7 +42,7 @@ export class ResultadosPesquisaComponent implements OnInit {
   loadResults(termo: string): void {
     this.isLoading = true;
     this.errorMessage = null;
-    this.tracks = []; // Limpa resultados anteriores
+    this.tracks = []; 
 
     interface SearchResponse {
       data: DeezerTrack[];
@@ -62,7 +62,7 @@ export class ResultadosPesquisaComponent implements OnInit {
     });
   }
 
-  // Futuramente, você pode usar este método para navegar para uma página de avaliação
+
   selecionarMusica(track: DeezerTrack): void {
     // Navega para a página de detalhes usando o ID do Deezer
     this.router.navigate(['/musica', track.id]); 
