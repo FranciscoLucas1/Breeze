@@ -6,13 +6,16 @@ import { Usuario } from '../../types/usuario';
 import { AutenticacaoService } from '../../services/autenticacao.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { MinhasAvaliacoesComponent } from '../../components/minhas-avaliacoes/minhas-avaliacoes.component';
 
 @Component({
   selector: 'app-perfil',
   imports: [
     CommonModule,
     NavbarComponent,
-    FormsModule
+    FormsModule,
+    MinhasAvaliacoesComponent
   ],
   templateUrl: './perfil.component.html',
   styleUrls: ['./perfil.component.css']

@@ -1,0 +1,85 @@
+.avaliacoes-recentes {
+  width: 100%;
+  max-width: 900px;
+  margin: 40px auto;
+}
+
+.titulo-secao {
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #2d2546;
+}
+
+.container__avaliacoes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 20px;
+}
+
+.avaliacao-card {
+  background-color: #131317;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  position: relative;
+}
+
+.avaliacao-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.avaliacao-capa {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+}
+
+.avaliacao-info {
+  padding: 12px;
+}
+
+.avaliacao-nota {
+  display: inline-block;
+  background-color: #7F5AF0;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.avaliacao-titulo-musica {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: white;
+  margin: 0 0 4px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.avaliacao-artista {
+  font-size: 0.9em;
+  color: #a7a7a7;
+  margin: 0;
+}
+
+.avaliacao-comentario {
+  font-size: 0.9em;
+  color: #a7a7a7;
+  margin-top: 10px;
+  font-style: italic;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

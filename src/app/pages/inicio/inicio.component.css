@@ -1,37 +1,154 @@
+/* Importando as fontes para garantir a disponibilidade */
+@import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
 .container {
-  padding: 20px;
-  font-family: "Chivo";
-  color: white
-  
+  padding: 100px 40px 40px 40px; /* Padding superior para a navbar fixa */
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.chart-section {
+  margin-bottom: 60px;
 }
 
 .titulo {
-  text-align: start;
-  font-size: 2em;
-  margin-bottom: 20px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.8em;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #2d2546;
 }
 
-
-.container__musicas, .container__generos {
+.container__musicas {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 15px;
+  /* Cria 5 colunas em telas grandes, e se ajusta para telas menores */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 25px;
 }
 
-
-.musicas, .generos {
-  background-color: #2CB67D; 
+.musica-card {
+  background-color: #2d2546;
   border-radius: 8px;
-  text-align: center;
-  padding: 20px;
-  height: 150px; 
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.musica-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.musica-capa {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.musica-info {
+  padding: 15px;
+  background-color: #2d2546;
+  flex-grow: 1;
+}
+
+.musica-titulo {
+  font-family: "Chivo", sans-serif;
+  font-size: 1em;
+  font-weight: bold;
+  color: #ffffff;
+  margin: 0 0 5px 0;
+  /* Garante que o texto não quebre e adiciona '...' se for longo */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.musica-artista {
+  font-family: "Chivo", sans-serif;
+  font-size: 0.9em;
+  color: #c5c0e0;
+  margin: 0;
+}
+
+/* Estilos para o estado de carregamento */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 20px;
+  color: #c5c0e0;
+}
+
+.spinner {
+  margin-bottom: 20px;
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  border-left-color: #7f5af0;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+.titulo-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.titulo {
+  margin-bottom: 0; /* Remove a margem do título para alinhar com os botões */
+  border-bottom: none; /* Remove a borda para um visual mais limpo */
+}
+
+.navegacao-botoes {
+  display: flex;
+  gap: 10px;
+}
+
+.navegacao-botoes button {
+  background-color: #2d2546;
+  border: 1px solid #4a4069;
+  color: #c5c0e0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; /* Deixa o botão redondo */
+  font-size: 1.5em;
+  font-weight: bold;
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
+  line-height: 1;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
+.navegacao-botoes button:hover:not(:disabled) {
+  background-color: #7f5af0;
+  color: #ffffff;
+  border-color: #7f5af0;
+}
 
-.musicas h3, .generos h3 {
-  font-size: 1.2em;
-  color: white;
+.navegacao-botoes button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Ajuste no .titulo para remover a borda que não precisamos mais */
+.titulo {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.8em;
+    font-weight: 600;
+    color: #ffffff;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }

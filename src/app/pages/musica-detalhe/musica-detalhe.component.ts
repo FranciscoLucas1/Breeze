@@ -4,7 +4,7 @@ import { PesquisarMusicaService } from '../../services/pesquisa_musica.service';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AutenticacaoService } from '../../services/autenticacao.service';
-import { NavbarComponent } from "../../components/navbar/navbar.component";
+import { NavbarComponent } from '../../components/navbar/navbar.component';
 
 @Component({
   selector: 'app-musica-detalhe',
@@ -29,9 +29,7 @@ export class MusicaDetalheComponent implements OnInit {
     public authService: AutenticacaoService
   ) {
     this.avaliacaoForm = this.fb.group({
-      // A nota (estrelas) continua sendo obrigatória
       nota: [null, [Validators.required, Validators.min(1), Validators.max(5)]],
-      // ✅ CORREÇÃO: Removido o Validators.required do comentário
       comentario: ['']
     });
   }
@@ -46,8 +44,7 @@ export class MusicaDetalheComponent implements OnInit {
     }
   }
 
-  // --- Lógica para interatividade das estrelas ---
-
+  // Lógica das estrelas (avaliar, destacarEstrelas, resetarEstrelas) continua a mesma...
   avaliar(nota: number): void {
     this.notaAtual = nota;
     this.avaliacaoForm.get('nota')?.setValue(nota);
@@ -61,20 +58,34 @@ export class MusicaDetalheComponent implements OnInit {
     this.hoverNota = 0;
   }
 
-  enviarAvaliaco(): void {
-    // A validação do formulário agora só verifica se a 'nota' foi preenchida
+  enviarAvaliacao(): void {
     if (this.avaliacaoForm.invalid || !this.musica) {
       return;
     }
     const avaliacaoData = {
-      musica: this.musica.id,
+      // ✅ CORRIGIDO: A chave agora é 'musica_id', como esperado pelo serializer.
+      musica_id: this.musica.id,
       ...this.avaliacaoForm.value
     };
 
-    this.musicService.createAvaliacao(avaliacaoData).subscribe(novaAvaliacao => {
-      this.musica.avaliacoes.unshift(novaAvaliacao);
-      this.avaliacaoForm.reset();
-      this.notaAtual = 0;
+    this.musicService.createAvaliacao(avaliacaoData).subscribe({
+      next: (novaAvaliacao) => {
+        // Adiciona a nova avaliação à lista e reseta o formulário
+        this.musica.avaliacoes.unshift(novaAvaliacao);
+        this.avaliacaoForm.reset();
+        this.notaAtual = 0;
+        // Atualiza o estado para mostrar que o usuário já avaliou
+        this.musica.avaliado_pelo_usuario = true; 
+      },
+      error: (err) => {
+        // Mostra o erro de duplicidade para o usuário
+        if (err.status === 400 && err.error.non_field_errors) {
+          alert(err.error.non_field_errors[0]); 
+        } else {
+          console.error('Erro ao enviar avaliação:', err);
+          alert('Ocorreu um erro inesperado ao enviar sua avaliação.');
+        }
+      }
     });
   }
 }

@@ -1,0 +1,14 @@
+<section class="avaliacoes-recentes" *ngIf="avaliacoes.length > 0">
+  <h3 class="titulo-secao">Suas Avaliações</h3>
+  <div class="container__avaliacoes">
+    <div *ngFor="let avaliacao of avaliacoes" class="avaliacao-card" [routerLink]="['/musica', avaliacao.musica.deezer_id]">
+      <img [src]="avaliacao.musica.capa_url" [alt]="avaliacao.musica.titulo" class="avaliacao-capa">
+      <div class="avaliacao-info">
+        <span class="avaliacao-nota">Sua nota: {{ avaliacao.nota }} ★</span>
+        <h4 class="avaliacao-titulo-musica">{{ avaliacao.musica.titulo }}</h4>
+        <p class="avaliacao-artista">{{ avaliacao.musica.artista_nome }}</p>
+        <p class="avaliacao-comentario" *ngIf="avaliacao.comentario">"{{ avaliacao.comentario }}"</p>
+      </div>
+    </div>
+  </div>
+</section>
