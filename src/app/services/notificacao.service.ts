@@ -24,23 +24,18 @@ export class NotificacaoService {
         if (Object.prototype.hasOwnProperty.call(errorData, key)) {
           const messages = errorData[key];
 
-          // CORREÇÃO: Tratamento unificado para arrays ou strings
           if (Array.isArray(messages)) {
-            // Se for um array de erros (comum em validação de formulários)
             messages.forEach(message => {
               this.showError(message, this.formatFieldName(key));
             });
           } else {
-            // Se for uma string simples (comum em erros de autenticação como 'detail')
             this.showError(String(messages), this.formatFieldName(key));
           }
         }
       }
     } else if (err.statusText) {
-      // Fallback para erros que não são objetos, usando o statusText da resposta
       this.showError(err.statusText, `Erro ${err.status}`);
     } else {
-      // Fallback final para erros inesperados
       this.showError('Ocorreu um erro inesperado. Tente novamente.', 'Erro');
     }
   }
@@ -53,7 +48,7 @@ export class NotificacaoService {
     if (field === 'non_field_errors' || field === 'detail') {
       return 'Erro de Autenticação';
     }
-    // expressão regular para substituir todos os underscores
+    // expressão regular para substituir todos os _
     return field.charAt(0).toUpperCase() + field.slice(1).replace(/_/g, ' ');
   }
 }

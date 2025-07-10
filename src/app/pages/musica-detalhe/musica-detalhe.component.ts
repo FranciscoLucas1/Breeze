@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { CommonModule } from '@angular/common';
 import { AutenticacaoService } from '../../services/autenticacao.service';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
-
+import { NotificacaoService } from '../../services/notificacao.service';
 @Component({
   selector: 'app-musica-detalhe',
   standalone: true,
@@ -18,7 +18,7 @@ export class MusicaDetalheComponent implements OnInit {
   isLoading = true;
   avaliacaoForm: FormGroup;
 
-  // Propriedades para o controle das estrelas
+  // controle das estrelas
   notaAtual = 0;
   hoverNota = 0;
 
@@ -26,7 +26,9 @@ export class MusicaDetalheComponent implements OnInit {
     private route: ActivatedRoute,
     private musicService: PesquisarMusicaService,
     private fb: FormBuilder,
+    private noti: NotificacaoService,
     public authService: AutenticacaoService
+    
   ) {
     this.avaliacaoForm = this.fb.group({
       nota: [null, [Validators.required, Validators.min(1), Validators.max(5)]],
@@ -44,7 +46,6 @@ export class MusicaDetalheComponent implements OnInit {
     }
   }
 
-  // Lógica das estrelas (avaliar, destacarEstrelas, resetarEstrelas) continua a mesma...
   avaliar(nota: number): void {
     this.notaAtual = nota;
     this.avaliacaoForm.get('nota')?.setValue(nota);
@@ -75,9 +76,11 @@ export class MusicaDetalheComponent implements OnInit {
         this.notaAtual = 0;
 
         this.musica.avaliado_pelo_usuario = true; 
+        this.noti.sucesso("Música avaliada", "Avaliação inserida")
+
       },
       error: (err) => {
-        // Mostra o erro de duplicidade para o usuário
+   
         if (err.status === 400 && err.error.non_field_errors) {
           alert(err.error.non_field_errors[0]); 
         } else {

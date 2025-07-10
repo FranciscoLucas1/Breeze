@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { DeezerResponse } from '../types/deezer'; // Importa os tipos definidos
+import { DeezerResponse } from '../types/deezer';
 
-// Interface opcional para tipagem forte dos resultados
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +11,7 @@ export class PesquisarMusicaService {
   
   private apiUrl = 'http://127.0.0.1:8000/api_bb/music/search/';
 
-  // URL do backend para os charts
+  
   private backendApiUrl = 'http://127.0.0.1:8000/api_bb';
 
   constructor(private http: HttpClient) { }
