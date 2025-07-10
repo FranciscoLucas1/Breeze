@@ -6,7 +6,6 @@ import { NavbarComponent } from "../../components/navbar/navbar.component";
 
 @Component({
   selector: 'app-inicio',
-  standalone: true,
   imports: [CommonModule, RouterModule, FormsModule, NavbarComponent],
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.css']
