@@ -48,6 +48,11 @@ export class AutenticacaoService {
     );
   }
 
+  getMinhasAvaliacoes(): Observable<any[]> {
+    // O endpoint é o mesmo do ViewSet, pois o backend já fará o filtro por usuário.
+    return this.http.get<any[]>('http://localhost:8000/api_bb/avaliacoes/');
+  }
+
   salvarTokens(tokens: { access: string, refresh: string }): void {
     localStorage.setItem('access_token', tokens.access);
     localStorage.setItem('refresh_token', tokens.refresh);

@@ -1,2 +1,48 @@
 <app-navbar></app-navbar>
 
+<main class="container">
+  <section class="chart-section">
+    <div class="titulo-container">
+      <h2 class="titulo">As mais tocadas no Brasil</h2>
+      <div class="navegacao-botoes" *ngIf="topBrasilCompleto.length > itensPorPagina">
+        <button (click)="navegar('brasil', 'anterior')" [disabled]="indiceBrasil === 0" title="Anteriores">‹</button>
+        <button (click)="navegar('brasil', 'proximo')" [disabled]="indiceBrasil + itensPorPagina >= topBrasilCompleto.length" title="Próximas">›</button>
+      </div>
+    </div>
+    <div *ngIf="!isLoading; else loading" class="container__musicas">
+      <div *ngFor="let musica of topBrasilDisplay" class="musica-card" [routerLink]="['/musica', musica.id]">
+        <img [src]="musica.album.cover_medium" [alt]="musica.album.title" class="musica-capa">
+        <div class="musica-info">
+          <h3 class="musica-titulo" [title]="musica.title">{{ musica.title }}</h3>
+          <p class="musica-artista">{{ musica.artist.name }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chart-section">
+    <div class="titulo-container">
+      <h2 class="titulo">As mais tocadas no Mundo</h2>
+      <div class="navegacao-botoes" *ngIf="topMundoCompleto.length > itensPorPagina">
+        <button (click)="navegar('mundo', 'anterior')" [disabled]="indiceMundo === 0" title="Anteriores">‹</button>
+        <button (click)="navegar('mundo', 'proximo')" [disabled]="indiceMundo + itensPorPagina >= topMundoCompleto.length" title="Próximas">›</button>
+      </div>
+    </div>
+    <div *ngIf="!isLoading; else loading" class="container__musicas">
+      <div *ngFor="let musica of topMundoDisplay" class="musica-card" [routerLink]="['/musica', musica.id]">
+        <img [src]="musica.album.cover_medium" [alt]="musica.album.title" class="musica-capa">
+        <div class="musica-info">
+          <h3 class="musica-titulo" [title]="musica.title">{{ musica.title }}</h3>
+          <p class="musica-artista">{{ musica.artist.name }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<ng-template #loading>
+  <div class="loading-container">
+    <div class="spinner"></div>
+    <p>Carregando as paradas de sucesso...</p>
+  </div>
+</ng-template>

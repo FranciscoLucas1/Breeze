@@ -12,6 +12,9 @@ export class PesquisarMusicaService {
   // URL do SEU backend, não do Deezer
   private apiUrl = 'http://127.0.0.1:8000/api_bb/music/search/';
 
+  // URL do backend para os charts
+  private backendApiUrl = 'http://127.0.0.1:8000/api_bb';
+
   constructor(private http: HttpClient) { }
 
   search(term: string): Observable<DeezerResponse> {
@@ -29,5 +32,15 @@ export class PesquisarMusicaService {
 
   createAvaliacao(avaliacaoData: { musica: number; nota: number; comentario: string }): Observable<any> {
     return this.http.post('http://127.0.0.1:8000/api_bb/avaliacoes/', avaliacaoData);
+  }
+
+   getTopBrasil(): Observable<DeezerResponse> {
+    // Aponta para a nova rota criada no Django
+    return this.http.get<DeezerResponse>(`${this.backendApiUrl}/charts/brasil/`);
+  }
+
+  getTopMundo(): Observable<DeezerResponse> {
+    // O ID '0' representa o chart principal/global
+    return this.http.get<DeezerResponse>(`${this.backendApiUrl}/charts/mundo/`);
   }
 }

@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-
+ <app-minhas-avaliacoes></app-minhas-avaliacoes>
 <div class="container">
   <div *ngIf="usuario" class="container__perfil">
     
@@ -21,15 +21,6 @@
       <h2 class="perfil__usuario">{{ usuario.username }}</h2>
       <p class="perfil__bio">{{ usuario.bio || 'Sem biografia. Edite seu perfil para adicionar uma.' }}</p>
 
-      <p class="perfil__numavalidos">
-        X músicas avaliadas
-        <i class="fa-solid fa-music icone_musica"></i>
-      </p>
-      <div class="perfil__generos">
-        <p class="genero">Rock</p>
-        <p class="genero">Clássica</p>
-        <p class="genero">Eletrônica</p>
-      </div>
       <button class="editar" (click)="iniciarEdicao()">Editar perfil</button>
     </ng-container>
 
@@ -45,4 +36,4 @@
     </ng-container>
 
   </div>
-</div>
+</div>  

@@ -19,13 +19,6 @@
   </div>
 
   <div class="nav_actions">
-    <ul class="nav_links">
-      <li *ngIf="!autenticaoServico.logado()">
-        <a routerLink="/inicio">Como Funciona</a>
-      </li>
-      <li><a routerLink="/inicio">Explorar Gêneros</a></li>
-    </ul>
-
     <ng-container *ngIf="autenticaoServico.logado(); else deslogado">
       <button class="btn perfil_btn" routerLink="/perfil">Perfil</button>
       <button class="btn sair_btn" (click)="logout()">Sair</button>
