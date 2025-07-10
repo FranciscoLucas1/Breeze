@@ -1,16 +1,15 @@
-// src/app/services/autenticacao.service.ts
-
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http'; // HttpHeaders não é mais necessário aqui
 import { Usuario } from '../types/usuario';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs'; // Importar o tap
 
 @Injectable({
   providedIn: 'root'
 })
 export class AutenticacaoService {
 
-  private apiUrl = 'http://localhost:8000/auth/users/me/';
+  // É uma boa prática ter a URL base da API aqui
+  private apiUrl = 'http://localhost:8000';
 
   constructor(private http: HttpClient) {}
 
@@ -25,22 +24,32 @@ export class AutenticacaoService {
   }
 
   obterUsuarioLogado(): Observable<Usuario> {
-    const token = localStorage.getItem('access_token');
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`
-    });
-
-    
-    return this.http.get<Usuario>(this.apiUrl, { headers });
+    // O interceptor agora adiciona o token, então o código aqui fica mais limpo.
+    return this.http.get<Usuario>(`${this.apiUrl}/auth/users/me/`);
   }
 
- 
   atualizarUsuario(dados: Partial<Usuario> | FormData): Observable<Usuario> {
-    const token = localStorage.getItem('access_token');
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`
-    });
+    // O interceptor também adiciona o token aqui.
+    return this.http.patch<Usuario>(`${this.apiUrl}/auth/users/me/`, dados);
+  }
 
-    return this.http.patch<Usuario>('http://localhost:8000/auth/users/me/', dados, { headers });
+  refreshToken(): Observable<{ access: string }> {
+    const refreshToken = localStorage.getItem('refresh_token');
+    
+    // IMPORTANTE: Verifique se a URL do seu backend para renovar o token é esta.
+    // Em Django com Simple-JWT, geralmente é /api/token/refresh/
+    return this.http.post<{ access: string }>(`${this.apiUrl}/auth/jwt/refresh/`, {
+      refresh: refreshToken
+    }).pipe(
+      tap(tokens => {
+        // Salva o novo access token que o backend retornou
+        localStorage.setItem('access_token', tokens.access);
+      })
+    );
+  }
+
+  salvarTokens(tokens: { access: string, refresh: string }): void {
+    localStorage.setItem('access_token', tokens.access);
+    localStorage.setItem('refresh_token', tokens.refresh);
   }
 }
