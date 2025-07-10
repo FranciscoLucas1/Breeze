@@ -5,7 +5,7 @@ import { Router, RouterModule } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { respostaLogin, UsuarioLogin, Usuario } from '../../types/usuario';
 import { AutenticacaoService } from '../../services/autenticacao.service';
-
+import { NotificacaoService } from '../../services/notificacao.service';
 @Component({
   selector: 'app-login',
   imports: [ReactiveFormsModule, CommonModule, RouterModule],
@@ -22,7 +22,8 @@ export class LoginComponent {
   constructor(
     private router: Router,
     private client: HttpClient,
-    private autenticaoServico: AutenticacaoService
+    private autenticaoServico: AutenticacaoService,
+    private noti: NotificacaoService
   ) {}
 
   onSubmit() {
@@ -45,6 +46,7 @@ export class LoginComponent {
               localStorage.setItem('usuario_logado', JSON.stringify(usuario));
               console.log('Usuário logado:', usuario);
               this.router.navigate(['/inicio']);
+              this.noti.sucesso('Login efetuado com sucesso!', 'Bem-vindo(a)');
             },
             error: (erro) => {
               console.error('Erro ao obter dados do usuário:', erro);
@@ -53,6 +55,7 @@ export class LoginComponent {
         },
         error: (err) => {
           console.error('Erro ao logar:', err);
+          this.noti.trataErro(err);
         }
       });
   }

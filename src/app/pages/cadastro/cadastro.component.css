@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
-
+/* #2cb67d */
 .principal {
   width: 550px;
   height: 830px;
@@ -18,7 +18,7 @@
 
 .principal__titulo {
   font-family: "Montserrat";
-  color: #2cb67d;
+  color: #7F5AF0 ;
   font-weight: bold;
   font-size: 31px;
   margin-top: -20px;
@@ -34,7 +34,7 @@
 label {
   font-family: "Montserrat";
   font-weight: 600;
-  color: #2cb67d;
+  color: #7F5AF0;
   font-size: 16 px;
 }
 
@@ -70,7 +70,7 @@ input:focus {
   text-align: right;
   margin-top: 5px;
   margin-bottom: 10px;
-  color: #2cb67d;
+  color: #7F5AF0;
   text-decoration: underline;
 }
 

@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms'
 import {Router, RouterModule } from '@angular/router';
 import {UsuarioCadastro } from '../../types/usuario'
+import { NotificacaoService } from '../../services/notificacao.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -18,7 +19,7 @@ export class CadastroComponent {
     senha: new FormControl(''),
     senha_repetir: new FormControl(''),
   });
-  constructor(private router: Router, private client: HttpClient) {}
+  constructor(private router: Router, private client: HttpClient, private noti: NotificacaoService) {}
   onSubmit() {
 
     const formulario = this.cadastroForm.value;
@@ -30,12 +31,13 @@ export class CadastroComponent {
 
     this.client.post('http://localhost:8000/auth/users/', DadosUsuario)
     .subscribe({
-      next: (res) => {
-        console.log('Usuário cadastrado com sucesso:', res);
+      next: () => {
+        this.noti.sucesso('Cadastro realizado', 'Você já pode fazer login!');
         this.router.navigate(['/login']);
       },
       error: (err) => {
         console.error('Erro ao cadastrar usuário:', err);
+        this.noti.trataErro(err);
       }
     })
 
