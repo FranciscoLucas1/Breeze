@@ -1,3 +1,5 @@
+/* src/app/pages/perfil/perfil.component.css */
+
 .container {
   height: 90%;
   display: flex;
@@ -5,48 +7,63 @@
   align-items: center;
   color: white;
   font-family: 'Chivo', sans-serif;
-
 }
 
 .container__perfil {
   width: 100%;
-  height: 550px;
-  background-color: #131317;  
+  max-width: 450px; /* Adicionado para melhor layout em telas maiores */
+  height: auto; /* Alterado para se ajustar ao conteúdo */
+  min-height: 550px;
+  background-color: #131317;
   text-align: center;
   border-radius: 6px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
   justify-content: center;
+  padding: 20px; /* Adicionado espaçamento interno */
+  box-sizing: border-box;
 }
 
 .perfil__imagem {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  
+  object-fit: cover; /* Garante que a imagem não se distorça */
+  margin-bottom: 16px; /* Adicionado espaço abaixo da imagem */
 }
 
 .perfil__usuario {
   font-size: 24px;
-  margin-bottom: 4px;
+  margin-bottom: 8px; /* Aumentado o espaço */
+  margin-top: 0;
+}
+
+/* NOVO ESTILO PARA A BIO */
+.perfil__bio {
+  font-size: 16px;
+  color: #a7a7a7;
+  margin-top: 0;
+  margin-bottom: 16px;
+  max-width: 90%;
 }
 
 .perfil__numavalidos {
   font-size: 16px;
   margin-top: 0;
+  margin-bottom: 16px;
 }
 
 .icone_musica {
   color: #7F5AF0;
-
 }
 
 .perfil__generos {
   display: flex;
-  align-self: center;
-  gap: 4px;
+  flex-wrap: wrap; /* Permite que os gêneros quebrem a linha */
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 24px;
 }
 
 .genero {
@@ -66,18 +83,101 @@
   background-color: #2e2c33;
 }
 
-.editar {
-  background-color: #7F5AF0;
+/* ESTILOS PARA BOTÕES DE AÇÃO */
+.editar, .salvar, .cancelar {
   border: none;
   color: white;
-  padding: 8px 12px;
+  padding: 10px 16px;
   border-radius: 5px;
   cursor: pointer;
   font-size: 14px;
   font-family: 'Chivo', sans-serif;
   font-weight: 600;
+  transition: background-color 0.2s ease;
 }
 
-.editar:hover {
+.editar, .salvar {
+  background-color: #7F5AF0;
+}
+
+.cancelar {
+  background-color: #4a4a58;
+}
+
+.editar:hover, .salvar:hover {
   background-color: #583ab5;
+}
+
+.cancelar:hover {
+  background-color: #31313a;
+}
+
+.botoes-edicao {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.edit-field {
+  width: 80%;
+  background-color: #1b1a20;
+  border: 1px solid #333;
+  color: white;
+  padding: 12px;
+  border-radius: 5px;
+  font-family: 'Chivo', sans-serif;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.edit-field:focus {
+  outline: none;
+  border-color: #7F5AF0;
+}
+
+textarea.edit-field {
+  min-height: 100px;
+  resize: vertical;
+}
+
+
+
+
+.perfil__imagem-container {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-bottom: 16px;
+}
+
+.imagem-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.perfil__imagem-container:hover .imagem-overlay {
+  opacity: 1;
+}
+
+.imagem-overlay i {
+  font-size: 24px;
+}
+
+.imagem-overlay span {
+  font-size: 12px;
+  margin-top: 4px;
 }

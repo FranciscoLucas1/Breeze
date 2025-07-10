@@ -1,26 +1,48 @@
 <app-navbar></app-navbar>
 
-
 <div class="container">
-  <div class="container__perfil">
-    <img src="perfil_usuario.png" alt="foto_perfil" class="perfi__imagem" />
-    <h2 class="perfil__usuario">  {{ usuario?.username }}</h2>
-    <p class="perfil__numavalidos"> X músicas avaliadas
-      <i class="fa-solid fa-music icone_musica"></i>
-    </p>
-    <div class="perfil__generos">
-      <p class="genero">
-        Rock
-      </p>
-      <p class="genero">
-        Clássica
-      </p>
-      <p class="genero">
-        Eletrônica
-      </p>
+  <div *ngIf="usuario" class="container__perfil">
+    
+    <div class="perfil__imagem-container">
+      <img 
+        [src]="fotoPreview || usuario.foto || '/perfil_usuario.png'" 
+        alt="foto_perfil" 
+        class="perfil__imagem" />
+      
+      <div *ngIf="editando" class="imagem-overlay" (click)="fileInput.click()">
+        <i class="fa-solid fa-camera"></i>
+        <span>Trocar Foto</span>
+      </div>
     </div>
-    <button class="editar">
-      Editar pefil
-    </button>
+    
+    <input type="file" #fileInput hidden (change)="aoSelecionarFoto($event)" accept="image/png, image/jpeg">
+    
+    <ng-container *ngIf="!editando">
+      <h2 class="perfil__usuario">{{ usuario.username }}</h2>
+      <p class="perfil__bio">{{ usuario.bio || 'Sem biografia. Edite seu perfil para adicionar uma.' }}</p>
+
+      <p class="perfil__numavalidos">
+        X músicas avaliadas
+        <i class="fa-solid fa-music icone_musica"></i>
+      </p>
+      <div class="perfil__generos">
+        <p class="genero">Rock</p>
+        <p class="genero">Clássica</p>
+        <p class="genero">Eletrônica</p>
+      </div>
+      <button class="editar" (click)="iniciarEdicao()">Editar perfil</button>
+    </ng-container>
+
+    <ng-container *ngIf="editando && usuarioEditavel">
+      <input type="text" [(ngModel)]="usuarioEditavel.username" class="edit-field" placeholder="Nome de usuário">
+      
+      <textarea [(ngModel)]="usuarioEditavel.bio" class="edit-field" placeholder="Escreva sua biografia..."></textarea>
+      
+      <div class="botoes-edicao">
+        <button class="salvar" (click)="salvarAlteracoes()">Salvar</button>
+        <button class="cancelar" (click)="cancelarEdicao()">Cancelar</button>
+      </div>
+    </ng-container>
+
   </div>
 </div>
