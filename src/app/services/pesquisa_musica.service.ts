@@ -21,4 +21,13 @@ export class PesquisarMusicaService {
     // Faz a chamada para o seu backend Django
     return this.http.get<DeezerResponse>(this.apiUrl, { params });
   }
+
+  getMusicaDetalhe(id: number): Observable<any> {
+    // Chama o novo endpoint do seu backend
+    return this.http.get(`http://127.0.0.1:8000/api_bb/musica-detalhes/${id}/`);
+  }
+
+  createAvaliacao(avaliacaoData: { musica: number; nota: number; comentario: string }): Observable<any> {
+    return this.http.post('http://127.0.0.1:8000/api_bb/avaliacoes/', avaliacaoData);
+  }
 }

@@ -4,6 +4,7 @@ import { PesquisarMusicaService as PesquisarMusicaService } from '../../services
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from "../../components/navbar/navbar.component";
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -23,7 +24,8 @@ export class ResultadosPesquisaComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private musicSearchService: PesquisarMusicaService
+    private musicSearchService: PesquisarMusicaService,
+    private router: Router 
   ) { }
 
   ngOnInit(): void {
@@ -62,7 +64,7 @@ export class ResultadosPesquisaComponent implements OnInit {
 
   // Futuramente, você pode usar este método para navegar para uma página de avaliação
   selecionarMusica(track: DeezerTrack): void {
-    console.log('Música selecionada para avaliação:', track);
-    // Ex: this.router.navigate(['/avaliar', track.id]);
+    // Navega para a página de detalhes usando o ID do Deezer
+    this.router.navigate(['/musica', track.id]); 
   }
 }
