@@ -1,4 +1,4 @@
-// src/app/models/usuario.ts
+
 export interface UsuarioCadastro {
     email: string;
     username: string;
