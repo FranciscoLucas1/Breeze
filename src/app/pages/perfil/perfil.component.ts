@@ -9,7 +9,6 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-perfil',
-  standalone: true,
   imports: [
     CommonModule,
     NavbarComponent,
@@ -23,11 +22,10 @@ export class PerfilComponent implements OnInit {
   usuarioEditavel: Partial<Usuario> | null = null;
   editando = false;
 
-  // NOVAS VARIÁVEIS PARA O UPLOAD
   fotoPreview: string | ArrayBuffer | null = null;
   arquivoSelecionado: File | null = null;
 
-  // Referência ao input de arquivo no HTML
+  
   @ViewChild('fileInput') fileInput!: ElementRef;
 
   constructor(private autenticacaoService: AutenticacaoService) {}
@@ -46,7 +44,6 @@ export class PerfilComponent implements OnInit {
   iniciarEdicao(): void {
     this.usuarioEditavel = { ...this.usuario };
     this.editando = true;
-    // Limpa o preview anterior ao iniciar uma nova edição
     this.fotoPreview = null;
     this.arquivoSelecionado = null;
   }
@@ -58,7 +55,7 @@ export class PerfilComponent implements OnInit {
     this.arquivoSelecionado = null;
   }
 
-  // NOVA FUNÇÃO: Disparada quando o usuário seleciona um arquivo.
+
   aoSelecionarFoto(event: any): void {
     const file = event.target.files[0];
     if (file) {
