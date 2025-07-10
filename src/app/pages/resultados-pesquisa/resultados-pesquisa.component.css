@@ -1,7 +1,6 @@
-/* src/app/pages/search-results/search-results.component.css */
 
 .results-container {
-  padding: 100px 40px 40px 40px; /* Padding-top maior por causa da navbar fixa */
+  padding: 100px 40px 40px 40px;
   max-width: 1200px;
   margin: 0 auto;
   color: #fff;
@@ -19,7 +18,7 @@
   font-weight: bold;
 }
 
-/* Grid de resultados */
+
 .results-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
